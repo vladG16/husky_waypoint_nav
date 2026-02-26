@@ -1,49 +1,60 @@
+# Husky Waypoint Navigation & ZED Integration (SCUBA Lab)
 
-# Husky Waypoint Navigation & ZED Integration
+This repository contains the autonomous navigation system for the SCUBA Lab's Husky A200 robot. It integrates ZED X camera data with custom ROS 2 navigation logic for waypoint following and path recording.
 
-This repository contains the autonomous navigation system for a Husky A200 robot. It integrates ZED X camera data with custom ROS 2 navigation logic.
+## 🛠 System Overview
 
-##  Project Overview
-The goal of this package is to provide reliable waypoint navigation using a PD controller. It currently utilizes the ZED X for positional tracking, with future plans to integrate a thermal camera system.
+This package utilizes a PD controller for precise waypoint navigation. The ZED X camera provides the primary positional tracking and odometry data.
 
-##  Quick Start (Build & Install)
+## 🚀 Quick Start (Build & Install)
+
 1. **Navigate to workspace:** `cd ~/ros2_ws`
 2. **Build package:** `colcon build --packages-select husky_nav_ros2`
 3. **Source:** `source install/setup.bash`
 
-##  Standard Operating Procedure (SOP)
+## 📋 Standard Operating Procedure (SOP)
 
 ### 1. Main Navigation Workflow
+
 **Terminal 1 (Start Camera):**
+
 ```bash
 ros2 launch zed_camera.launch.py camera_model:=zedx
-Terminal 2 (Start Navigator):
 
-Bash
+```
 
+**Terminal 2 (Start Navigator):**
+
+```bash
 ros2 run husky_nav_ros2 collection_simple
 
-2. ZED Diagnostic Tools
-Positional Tracking: ./ZED_Positional_Tracking (located in ~/zed-examples/build/)
+```
 
-Floor Detection: ./ZED_Floor_Plane_Detection (sets origin plane at the floor)
+### 2. ZED Diagnostic Tools
 
-Global Localization: ./ZED_Live_Global_Localization
+These tools are used to verify camera hardware and environment detection before running full navigation cycles.
 
-Note: GNSS/GPS reader is currently commented out in main.cpp until hardware is acquired.
-
- Key Files
-waypoint_navigator_pd.py: Advanced navigator using a PD controller for smooth movement.
-
-navigation_simple.py: Basic waypoint following logic.
-
-manual_waypoint_recorder.py: Utility to record coordinates to waypoints.csv.
-
-robot_math_utils.py: Mathematical helper functions for navigation.
-
- Future Work
-Integration of a FLIR Boson thermal camera system.
+* **Positional Tracking:** `./ZED_Positional_Tracking` (Tests 3D movement tracking)
+* **Floor Detection:** `./ZED_Floor_Plane_Detection` (Automatically sets the origin plane at floor level)
+* **Global Localization:** `./ZED_Live_Global_Localization`
+* *Note: GNSS/GPS reader is currently disabled in `main.cpp` until an antenna is acquired.*
 
 
+
+##  Key Files
+
+* **`waypoint_navigator_pd.py`**: The primary navigator using a Proportional-Derivative controller for stable movement.
+* **`navigation_simple.py`**: A baseline waypoint following script.
+* **`manual_waypoint_recorder.py`**: A utility to manually drive the robot and record coordinates to `waypoints.csv`.
+* **`robot_math_utils.py`**: Helper functions for distance and heading calculations.
+
+##  Planned Integrations
+
+* Integration of a FLIR Boson thermal camera system for multispectral navigation.
+* Implementation of YOLOv8 for enhanced object detection and vision-based tracking.
 
 ---
+
+
+
+**Would you like me to help you update the `package.xml` to make sure the SCUBA Lab is listed as the official maintainer of this code?**
