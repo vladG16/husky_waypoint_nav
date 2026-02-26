@@ -2,17 +2,17 @@
 
 This repository contains the autonomous navigation system for the SCUBA Lab's Husky A200 robot. It integrates ZED X camera data with custom ROS 2 navigation logic for waypoint following and path recording.
 
-## 🛠 System Overview
+##  System Overview
 
 This package utilizes a PD controller for precise waypoint navigation. The ZED X camera provides the primary positional tracking and odometry data.
 
-## 🚀 Quick Start (Build & Install)
+##  Quick Start (Build & Install)
 
 1. **Navigate to workspace:** `cd ~/ros2_ws`
 2. **Build package:** `colcon build --packages-select husky_nav_ros2`
 3. **Source:** `source install/setup.bash`
 
-## 📋 Standard Operating Procedure (SOP)
+##  Standard Operating Procedure (SOP)
 
 ### 1. Main Navigation Workflow
 
