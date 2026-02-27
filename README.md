@@ -57,4 +57,3 @@ These tools are used to verify camera hardware and environment detection before 
 
 
 
-**Would you like me to help you update the `package.xml` to make sure the SCUBA Lab is listed as the official maintainer of this code?**
